@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Itb.CodeCommentFinder.Common;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Itb.CodeCommentFinder.GithubRepository
 {
@@ -13,16 +15,17 @@ namespace Itb.CodeCommentFinder.GithubRepository
             /* TODO: this should reside in common since it will be the same for all repo types,
              but a more sophisticated solution for determining file extensions is needed anyway */
 
-            ActiveFileExtensions = FormatExtensions(fileExtensions);
-        }
-        public List<string> FormatExtensions(List<string> fileExtensions)
-        {
-            // make sure extensions start with . for easy comparison 
-            throw new NotImplementedException();
+            ActiveFileExtensions = FileExtensions.FormatExtensions(fileExtensions);
         }
 
-        public bool ShouldProcessFile(string fileName)
+        public List<RepositoryFile> GetAllFiles(string userName, string repositoryName)
         {
+
+            // TODO: should use DI for http and something better (e.g. RestSharp, though not supported by .net standard yet)
+            using (var client = new HttpClient())
+            {
+                // FileExtensions.ShouldProcessFile(fileName)
+            }
             throw new NotImplementedException();
         }
 
