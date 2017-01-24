@@ -1,16 +1,18 @@
 {
-  "version": "1.0.0-*",
-  "buildOptions": {
-    "debugType": "portable"
-  },
-    "dependencies": {
-        "Itb.CodeCommentFinder.Common": "1.0.0-*"
+    "version": "1.0.0-*",
+    "buildOptions": {
+        "debugType": "portable"
     },
-  "frameworks": {
-    "netstandard1.6": {
-      "dependencies": {
-        "NETStandard.Library": "1.6.0"
-      }
+    "frameworks": {
+        "netstandard1.6": {
+            "dependencies": {
+                "NETStandard.Library": "1.6.0"
+            }
+        }
+    },
+    "dependencies": {
+        "Itb.CodeCommentFinder.Common": "1.0.0-*",
+        "Flurl": "2.2.1",
+        "Flurl.Http": "1.1.1"
     }
-  }
 }

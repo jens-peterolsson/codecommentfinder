@@ -35,12 +35,12 @@ namespace Itb.CodeCommentFinder.GithubRepository.Tests
         {
             var testData = new List<string> { ".cs", ".js" };
 
-            Assert.True(FileExtensions.ShouldProcessFile("file.cs", testData));
-            Assert.False(FileExtensions.ShouldProcessFile("file.ts", testData));
+            Assert.True(FileExtensions.IsSelectedFileType("file.cs", testData));
+            Assert.False(FileExtensions.IsSelectedFileType("file.ts", testData));
 
-            Assert.True(FileExtensions.ShouldProcessFile("somepath/subdir/file.cs", testData), 
+            Assert.True(FileExtensions.IsSelectedFileType("somepath/subdir/file.cs", testData), 
                 "Should parse full path in file name");
-            Assert.True(FileExtensions.ShouldProcessFile(@"somepath\subdir\file.cs", testData), 
+            Assert.True(FileExtensions.IsSelectedFileType(@"somepath\subdir\file.cs", testData), 
                 "Should parse full path in file name");
         }
 

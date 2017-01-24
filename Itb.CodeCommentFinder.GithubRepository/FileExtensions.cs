@@ -19,7 +19,7 @@ namespace Itb.CodeCommentFinder.GithubRepository
             return result;
         }
 
-        public static bool ShouldProcessFile(string fileName, List<string> activeFileExtensions)
+        public static bool IsSelectedFileType(string fileName, List<string> activeFileExtensions)
         {
             var extension = System.IO.Path.GetExtension(fileName);
             var result = (!string.IsNullOrWhiteSpace(extension) && activeFileExtensions.Contains(extension));
