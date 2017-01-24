@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.ConsoleGui", "Itb.CodeCommentFinder.ConsoleGui\Itb.CodeCommentFinder.ConsoleGui.xproj", "{A69B000A-39B9-4C98-B895-F08CCAADA340}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.CommentParser", "Itb.CodeCommentFinder.CommentParser\Itb.CodeCommentFinder.CommentParser.xproj", "{AEFCB6E8-778E-41F3-987D-C409D5C6E16E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.CommentParser.Tests", "Itb.CodeCommentFinder.CommentParser.Tests\Itb.CodeCommentFinder.CommentParser.Tests.xproj", "{B72E5045-E7C5-423A-9087-ACA2628774AF}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.Common", "Itb.CodeCommentFinder.Common\Itb.CodeCommentFinder.Common.xproj", "{2628772A-95EB-454D-B7DA-B5776CDA9856}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.GithubRepository", "Itb.CodeCommentFinder.GithubRepository\Itb.CodeCommentFinder.GithubRepository.xproj", "{C9416A8B-D610-4C22-9DEE-CD339A4116B9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Itb.CodeCommentFinder.GithubRepository.Tests", "Itb.CodeCommentFinder.GithubRepository.Tests\Itb.CodeCommentFinder.GithubRepository.Tests.xproj", "{67CAA7D5-D216-4FE1-86D7-D025F0BE3083}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A69B000A-39B9-4C98-B895-F08CCAADA340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69B000A-39B9-4C98-B895-F08CCAADA340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69B000A-39B9-4C98-B895-F08CCAADA340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69B000A-39B9-4C98-B895-F08CCAADA340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFCB6E8-778E-41F3-987D-C409D5C6E16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFCB6E8-778E-41F3-987D-C409D5C6E16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFCB6E8-778E-41F3-987D-C409D5C6E16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFCB6E8-778E-41F3-987D-C409D5C6E16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72E5045-E7C5-423A-9087-ACA2628774AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72E5045-E7C5-423A-9087-ACA2628774AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72E5045-E7C5-423A-9087-ACA2628774AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72E5045-E7C5-423A-9087-ACA2628774AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2628772A-95EB-454D-B7DA-B5776CDA9856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2628772A-95EB-454D-B7DA-B5776CDA9856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2628772A-95EB-454D-B7DA-B5776CDA9856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2628772A-95EB-454D-B7DA-B5776CDA9856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9416A8B-D610-4C22-9DEE-CD339A4116B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9416A8B-D610-4C22-9DEE-CD339A4116B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9416A8B-D610-4C22-9DEE-CD339A4116B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9416A8B-D610-4C22-9DEE-CD339A4116B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CAA7D5-D216-4FE1-86D7-D025F0BE3083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CAA7D5-D216-4FE1-86D7-D025F0BE3083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CAA7D5-D216-4FE1-86D7-D025F0BE3083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CAA7D5-D216-4FE1-86D7-D025F0BE3083}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
