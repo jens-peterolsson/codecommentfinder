@@ -7,11 +7,12 @@ namespace Itb.CodeCommentFinder.GithubRepository
 {
     public static class FileExtensions
     {
-        public static List<string> FormatExtensions(List<string> fileExtensions)
+        public static IEnumerable<string> FormatExtensions(IEnumerable<string> fileExtensions)
         {
             // make sure extensions start with . for easy comparisons
             var result = new List<string>();
-            fileExtensions?.ForEach(ext =>
+
+            fileExtensions?.ToList().ForEach(ext =>
             {
                 result.Add(ext.StartsWith(".") ? ext : "." + ext);
             });
@@ -19,7 +20,7 @@ namespace Itb.CodeCommentFinder.GithubRepository
             return result;
         }
 
-        public static bool IsSelectedFileType(string fileName, List<string> activeFileExtensions)
+        public static bool IsSelectedFileType(string fileName, IEnumerable<string> activeFileExtensions)
         {
             var extension = System.IO.Path.GetExtension(fileName);
             var result = (!string.IsNullOrWhiteSpace(extension) && activeFileExtensions.Contains(extension));

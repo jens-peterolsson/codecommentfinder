@@ -4,7 +4,11 @@
     "debugType": "portable",
     "emitEntryPoint": true
   },
-  "dependencies": {},
+    "dependencies": {
+        "Itb.CodeCommentFinder.CommentParser": "1.0.0-*",
+        "Itb.CodeCommentFinder.Common": "1.0.0-*",
+        "Itb.CodeCommentFinder.GithubRepository": "1.0.0-*"
+    },
   "frameworks": {
     "netcoreapp1.0": {
       "dependencies": {

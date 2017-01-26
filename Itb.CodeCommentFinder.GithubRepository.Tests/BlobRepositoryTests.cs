@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Xunit;
 using Flurl.Http.Testing;
+using System.Linq;
 
 namespace Itb.CodeCommentFinder.GithubRepository.Tests
 {
@@ -23,11 +24,11 @@ namespace Itb.CodeCommentFinder.GithubRepository.Tests
                     .RespondWith(TestDataTreeNode);
 
                 var tested = new BlobRepository(new List<string> { ".cs" });
-                var result = await tested.GetAllFilesAsync("user", "repo");
+                var result = await tested.GetAllFilesAsync("user", "pass", "repo");
 
-                Assert.Equal(1, result.Count);
-                Assert.Equal("TreeNode.cs", result[0].Name);
-                Assert.True(result[0].Content.Trim().StartsWith("namespace Itb.CodeCommentFinder.GithubRepository.Entities"));
+                Assert.Equal(1, result.Count());
+                Assert.Equal("TreeNode.cs", result.First().Name);
+                Assert.True(result.First().Content.Trim().StartsWith("namespace Itb.CodeCommentFinder.GithubRepository.Entities"));
             }
         }
 

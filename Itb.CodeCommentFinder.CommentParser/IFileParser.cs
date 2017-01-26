@@ -8,6 +8,7 @@ namespace Itb.CodeCommentFinder.CommentParser
 {
     public interface IFileParser
     {
-        string FindComments(List<RepositoryFile> files, List<ICodeLineParser> lineParsers);
+        IEnumerable<ICodeLineParser> LineParsers { get; }
+        string FindComments(IEnumerable<RepositoryFile> files);
     }
 }

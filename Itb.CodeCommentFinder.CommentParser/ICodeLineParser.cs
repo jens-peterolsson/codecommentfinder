@@ -5,6 +5,6 @@ namespace Itb.CodeCommentFinder.CommentParser
 {
     public interface ICodeLineParser
     {
-        Func<string, CodeLine> Parse { get; }
+        Func<string, ParseResult> Parse { get; }
     }
 }

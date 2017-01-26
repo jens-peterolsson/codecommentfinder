@@ -5,7 +5,7 @@ namespace Itb.CodeCommentFinder.CommentParser
 {
     public class CSharpSingleLineParser : ICodeLineParser
     {
-        public Func<string, CodeLine> Parse
+        public Func<string, ParseResult> Parse
         {
             get
             {
@@ -13,9 +13,9 @@ namespace Itb.CodeCommentFinder.CommentParser
             }
         }
 
-        private CodeLine ParseLine(string line)
+        private ParseResult ParseLine(string line)
         {
-            var result = new CodeLine
+            var result = new ParseResult
             {
                 CommentStatus = CommentStatus.None
             };

@@ -8,33 +8,39 @@ namespace Itb.CodeCommentFinder.CommentParser.Tests
     public class FileParserTests
     {
         private string ExpectedSingleLineComment = "1.cs: // That's five again!" + Environment.NewLine;
-        private string ExpectedMultiLineComment = "2.cs:  /* It will be five again! => */" + Environment.NewLine;
+        private string ExpectedMultiLineComment = "2.cs: /* It will be five again! => */" + Environment.NewLine;
+
+        //TODO: add test that quoted // should not be included as comments, e.g. url:s
 
         [Fact]
         public void ShouldFindSingleLineComment()
         {
-            var tested = new FileParser();
-            var result = tested.FindComments(GetTestData(), new List<ICodeLineParser> { new CSharpSingleLineParser() });
+            var tested = new FileParser(new List<ICodeLineParser> { new CSharpSingleLineParser() });
+
+            var result = tested.FindComments(GetTestData());
             Assert.Equal(ExpectedSingleLineComment, result);
         }
 
         [Fact]
         public void ShouldFindMultiLineComment()
         {
-            var tested = new FileParser();
-            var result = tested.FindComments(GetTestData(), new List<ICodeLineParser> { new CSharpMultiLineParser() });
+            var tested = new FileParser(new List<ICodeLineParser> { new CSharpMultiLineParser() });
+
+            var result = tested.FindComments(GetTestData());
             Assert.Equal(ExpectedMultiLineComment, result);
         }
 
         [Fact]
         public void ShouldFindBoth()
         {
-            var tested = new FileParser();
-            var result = tested.FindComments(GetTestData(), new List<ICodeLineParser> { new CSharpSingleLineParser(), new CSharpMultiLineParser() });
+            var tested = new FileParser(new List<ICodeLineParser> { new CSharpSingleLineParser(), new CSharpMultiLineParser() });
+
+            var result = tested.FindComments(GetTestData());
 
             Assert.True(result.Contains(ExpectedSingleLineComment));
             Assert.True(result.Contains(ExpectedMultiLineComment));
         }
+
 
         private List<RepositoryFile> GetTestData()
         {
@@ -45,7 +51,7 @@ namespace Itb.CodeCommentFinder.CommentParser.Tests
                     Name = "1.cs",
                     Content =
                         "int x = 5;"
-                        + Environment.NewLine
+                        + "\n"
                         + "double y = 5.0; // That's five again!"
                 },
                 new RepositoryFile
@@ -53,7 +59,7 @@ namespace Itb.CodeCommentFinder.CommentParser.Tests
                     Name = "2.cs",
                     Content =
                         "int x = 5; /*"
-                        + Environment.NewLine
+                        + "\n"
                         + " It will be five again! => */ double y = 5.0;"
                 }
             };

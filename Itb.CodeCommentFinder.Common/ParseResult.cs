@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Itb.CodeCommentFinder.Common
 {
-    public class CodeLine
+    public class ParseResult
     {
         public CommentStatus CommentStatus { get; set; }
         public string Comment { get; set; }

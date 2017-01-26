@@ -6,7 +6,7 @@ namespace Itb.CodeCommentFinder.Common
 {
 	public interface ICodeRepository
 	{
-		// TODO: needs to deal with authentication if repo not public
-   	 Task<List<RepositoryFile>> GetAllFilesAsync(string userName, string repositoryName);
+        IEnumerable<string> ActiveFileExtensions { get; }
+        Task<IEnumerable<RepositoryFile>> GetAllFilesAsync(string userName, string password, string repositoryName);
 	}
 }

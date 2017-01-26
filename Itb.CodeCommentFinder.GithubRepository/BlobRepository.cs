@@ -12,29 +12,30 @@ namespace Itb.CodeCommentFinder.GithubRepository
 {
     public class BlobRepository : ICodeRepository
     {
-        public List<string> ActiveFileExtensions { get; private set; }
+        public IEnumerable<string> ActiveFileExtensions { get; }
 
         private const string GitFileType = "blob";
 
-        public BlobRepository(List<string> fileExtensions)
+        public BlobRepository(IEnumerable<string> fileExtensions)
         {
 
             /* TODO: this should reside in common since it will be the same for all repo types,
-             but a more sophisticated solution for determining file extensions is needed anyway */
+             but a more sophisticated solution for determining file extensions, comment style etc. 
+             is needed anyway */
 
             ActiveFileExtensions = FileExtensions.FormatExtensions(fileExtensions);
         }
 
-        public async Task<List<RepositoryFile>> GetAllFilesAsync(string userName, string repositoryName)
+        public async Task<IEnumerable<RepositoryFile>> GetAllFilesAsync(string userName, string password, string repositoryName)
         {
 
-            // TODO: should use DI for http?
-            // flurl has ultra cool fluent syntax though + support for faking http context for unit tests!
-            // also algorithm storing all code found in repo in memory is not very efficient...
+            // TODO: user should not be same for both auth and repo, should be possible to
+            // parse public github repos
+            // also algorithm storing everything found in repo in memory is not very efficient...
 
             var result = new List<RepositoryFile>();
 
-            var gitTree = await GetRepositoryTree(userName, repositoryName);
+            var gitTree = await GetRepositoryTree(userName, password, repositoryName);
 
             /* TODO: should check whether gitTree.truncated is true or not
              and do some error handling... */
@@ -44,27 +45,34 @@ namespace Itb.CodeCommentFinder.GithubRepository
                 if (!node.type.Equals(GitFileType)) continue;
                 if (!FileExtensions.IsSelectedFileType(node.path, ActiveFileExtensions)) continue;
 
-                var repoFile = await GetBlobContentAsync(node);
+                var repoFile = await GetBlobContentAsync(node, userName, password);
                 result.Add(repoFile);
             }
 
             return result;
         }
 
-        private static async Task<TreeRoot> GetRepositoryTree(string userName, string repositoryName)
+        private static async Task<TreeRoot> GetRepositoryTree(string userName, string password, string repositoryName)
         {
             var baseUrl = $@"https://api.github.com/repos/{userName}/{repositoryName}/git";
 
             //TODO: hard-coded branch = master
-            var url = $"{baseUrl}".AppendPathSegment("trees/master?recursive=1");
+            var url = $"{baseUrl}"
+                .AppendPathSegment("trees/master")
+                .SetQueryParam("recursive", "1")
+                .WithHeader("User-Agent", "codecommentfinder")
+                .WithBasicAuth(userName, password);
 
             var gitTree = await url.GetJsonAsync<TreeRoot>();
             return gitTree;
         }
 
-        private async Task<RepositoryFile> GetBlobContentAsync(TreeNode node)
+        private async Task<RepositoryFile> GetBlobContentAsync(TreeNode node, string userName, string password)
         {
-            var blob = await node.url.GetJsonAsync<Blob>();
+            var blob = await node.url
+                        .WithHeader("User-Agent", "codecommentfinder")
+                        .WithBasicAuth(userName, password)
+                        .GetJsonAsync<Blob>();
 
             // TODO: assumes base64 and utf8...
             byte[] data = Convert.FromBase64String(blob.content);

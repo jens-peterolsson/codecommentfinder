@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Itb.CodeCommentFinder.GithubRepository.Tests
@@ -25,7 +26,7 @@ namespace Itb.CodeCommentFinder.GithubRepository.Tests
         private void VerifyExtensions(List<string> extensions)
         {
             var result = FileExtensions.FormatExtensions(extensions);
-            Assert.Equal(2, result.Count);
+            Assert.Equal(2, result.Count());
             Assert.True(result.Contains(".cs"));
             Assert.True(result.Contains(".js"));
         }
