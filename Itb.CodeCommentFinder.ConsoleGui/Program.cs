@@ -18,6 +18,8 @@ namespace Itb.CodeCommentFinder.ConsoleGui
             {
                 Console.WriteLine("Nope, you got it wrong.");
                 Console.WriteLine("T-E-R-M-I-N-A-T-I-N-G.");
+                
+                return;
             }
 
             Task t = MainAsync(userName, password, repoName);
